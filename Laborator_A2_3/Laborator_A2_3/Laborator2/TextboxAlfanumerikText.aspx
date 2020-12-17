@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Ushtrimi8.aspx.cs" Inherits="Laborator_A2_3.Ushtrimi8" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="TextboxAlfanumerikText.aspx.cs" Inherits="Laborator_A2_3.Laborator2.TextboxAlfanumerikText" %>
 
 <!DOCTYPE html>
 

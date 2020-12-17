@@ -5,17 +5,14 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Laborator_A2_3
+namespace Laborator_A2_3.Laborator2
 {
-    public partial class Ushtrimi8 : System.Web.UI.Page
+    public partial class TextboxAlfanumerikText : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
-
-      
-
         protected void AfishoniText(object sender, EventArgs e)
         {
 
