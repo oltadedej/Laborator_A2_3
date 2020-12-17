@@ -178,6 +178,7 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Ushtrimi8.aspx" />
     <Content Include="Web.config" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
@@ -198,6 +199,13 @@
     </Compile>
     <Compile Include="Rivalda\WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ushtrimi8.aspx.cs">
+      <DependentUpon>Ushtrimi8.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ushtrimi8.aspx.designer.cs">
+      <DependentUpon>Ushtrimi8.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
