@@ -13,7 +13,7 @@
             <br />
 
 
-            <asp:DropDownList ID="DropDownList1" runat="server">
+            <asp:DropDownList ID="DropDownList1" OnSelectedIndexChanged="" runat="server">
                 <asp:ListItem Value="E kuqe"></asp:ListItem>
                 <asp:ListItem Value="Jeshile"></asp:ListItem>
                 <asp:ListItem Value="Blu"></asp:ListItem>
