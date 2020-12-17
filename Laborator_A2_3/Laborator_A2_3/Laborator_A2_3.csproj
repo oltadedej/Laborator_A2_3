@@ -75,10 +75,14 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Olta\Ushtrim1.html" />
-    <Content Include="Olta\Ushtrim2.html" />
-    <Content Include="Olta\Ushtrim3.html" />
-    <Content Include="Olta\Ushtrim4.html" />
+    <Content Include="img\download.png" />
+    <Content Include="Laborator1\Ushtrim1.html" />
+    <Content Include="Laborator1\Ushtrim2.html" />
+    <Content Include="Laborator1\Ushtrim3.html" />
+    <Content Include="Laborator1\Ushtrim4.html" />
+    <Content Include="Laborator1\UshtrimiDSH.html" />
+    <Content Include="Laborator2\Ushtrim2.aspx" />
+    <Content Include="Laborator2\Ushtrimi1.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -191,6 +195,20 @@
     <Content Include="Scripts\popper-utils.js.map" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Laborator2\Ushtrim2.aspx.cs">
+      <DependentUpon>Ushtrim2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Laborator2\Ushtrim2.aspx.designer.cs">
+      <DependentUpon>Ushtrim2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Laborator2\Ushtrimi1.aspx.cs">
+      <DependentUpon>Ushtrimi1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Laborator2\Ushtrimi1.aspx.designer.cs">
+      <DependentUpon>Ushtrimi1.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
