@@ -15,6 +15,7 @@ namespace Laborator_A2_3.Laborator3
             if (!Page.IsPostBack)
             {
                 //gjejme informacionin e phonebook tek lista
+                //SHTOJME KUSHTIN NESE DUAM QE TE NA HAPET FAQJA E KUR QUERYSTRING NUK I KALOHET
                 if (Request.QueryString["IdPhoneBook"] != null)
                 {
                     int IdPhoneBook = 0;
