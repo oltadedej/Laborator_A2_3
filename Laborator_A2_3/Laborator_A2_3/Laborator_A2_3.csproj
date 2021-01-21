@@ -87,8 +87,10 @@
     <Content Include="Laborator2\Ushtrimi1.aspx" />
     <Content Include="Laborator2\Ushtrimi7.aspx" />
     <Content Include="Laborator2\VisibilitetiILabelave.aspx" />
+    <Content Include="Laborator3\Afisho.aspx" />
     <Content Include="Laborator3\DSH_CHANGE_IMG.aspx" />
     <Content Include="Laborator3\DSH_Zevendeso_Fjalen.html" />
+    <Content Include="Laborator3\MenaxhoRecordePhoneBooks.aspx" />
     <Content Include="Rivalda\WebForm2.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -238,12 +240,28 @@
     <Compile Include="Laborator2\VisibilitetiILabelave.aspx.designer.cs">
       <DependentUpon>VisibilitetiILabelave.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Laborator3\Afisho.aspx.cs">
+      <DependentUpon>Afisho.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Laborator3\Afisho.aspx.designer.cs">
+      <DependentUpon>Afisho.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Laborator3\Domain\Configuration.cs" />
+    <Compile Include="Laborator3\Domain\PhoneBook.cs" />
     <Compile Include="Laborator3\DSH_CHANGE_IMG.aspx.cs">
       <DependentUpon>DSH_CHANGE_IMG.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Laborator3\DSH_CHANGE_IMG.aspx.designer.cs">
       <DependentUpon>DSH_CHANGE_IMG.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Laborator3\MenaxhoRecordePhoneBooks.aspx.cs">
+      <DependentUpon>MenaxhoRecordePhoneBooks.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Laborator3\MenaxhoRecordePhoneBooks.aspx.designer.cs">
+      <DependentUpon>MenaxhoRecordePhoneBooks.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rivalda\WebForm1.aspx.cs">
@@ -267,6 +285,7 @@
     <Compile Include="Laborator2\TextboxAlfanumerikText.aspx.designer.cs">
       <DependentUpon>TextboxAlfanumerikText.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Tokens.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

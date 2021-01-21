@@ -12,10 +12,6 @@
     <br />
     <label id="afishimRezultati"></label>
 
-
-
-
-
     <script>
         function ZevendesoFjalen() {
             var fjalia = document.getElementById("fjalia").value;
@@ -23,6 +19,7 @@
             if (fjalia !== null && fjalia !== "" && fjalia !== "undefined") {
 
                 if (fjalia.length >= 10) { // var a =  test234 //7 -- 6 indexe  a.slice(3,a.length )=t234
+                    // laborator  == 9 karaktere -->  fjalia.slice(7, fjalia.length) --> or
                      fjalia_Re = "Miresevini" + fjalia.slice(9, fjalia.length); // merr nga pozicioni 9 deri ne fund te fjales
                 }
                 else {

@@ -11,12 +11,23 @@ namespace Laborator_A2_3.Laborator3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //KOMENTET SHPJEGOJNE NJE KONCEPT PER AUTENTIFIKIMIN E NJE PERDORUESIII
+            //if(!Tokens.Authorizations.Select(i => i.AuthorizationDescription.Contains("ChangeImng")).Any())
+            //{
+            //   //Response.Redirect()
+            //}
+         
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
             Image1.ImageUrl = "~/img/download_new.png";
+
+            //user ===user
+            //if ( Session["User"]!=null && Session["user"].ToString().Equals("user"))
+            //{
+
+            //}
         }
     }
 }
