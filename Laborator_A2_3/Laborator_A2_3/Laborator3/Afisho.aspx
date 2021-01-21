@@ -18,6 +18,7 @@
              <br />
              <asp:Label ID="Label2" runat="server">PhoneBookType:</asp:Label>
             <asp:Label ID="lblPhoneBookType" runat="server"></asp:Label>
+            <br />
 
         </div>
     </form>
