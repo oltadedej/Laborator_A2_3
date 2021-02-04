@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace  Laborator_A2_3.Laborator4
+namespace Laborator_A2_3.Laborator4
 {
 
 
-    public partial class Students
+    public partial class Students1
     {
 
         /// <summary>
@@ -24,12 +24,21 @@ namespace  Laborator_A2_3.Laborator4
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// gdvStudent control.
+        /// gdvstudents control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gdvStudent;
+        protected global::System.Web.UI.WebControls.GridView gdvstudents;
+
+        /// <summary>
+        /// LogOut control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button LogOut;
     }
 }

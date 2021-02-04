@@ -10,6 +10,11 @@
         <EntityTypeShape EntityType="University_LaboratorModel.Student" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
         <AssociationConnector Association="University_LaboratorModel.FK_Enrollment_Course_CourseId" ManuallyRouted="false" />
         <AssociationConnector Association="University_LaboratorModel.FK_Enrollment_Student_StudentId" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="University_LaboratorModel.Authorization" Width="1.5" PointX="3.375" PointY="5.125" />
+        <EntityTypeShape EntityType="University_LaboratorModel.User" Width="1.5" PointX="3.375" PointY="7.75" />
+        <EntityTypeShape EntityType="University_LaboratorModel.User_Authorization" Width="1.5" PointX="5.625" PointY="4.875" />
+        <AssociationConnector Association="University_LaboratorModel.FK_User_Authorization_Authorizations" />
+        <AssociationConnector Association="University_LaboratorModel.FK_User_Authorization_User" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

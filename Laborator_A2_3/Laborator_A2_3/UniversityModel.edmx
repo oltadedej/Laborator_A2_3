@@ -4,7 +4,14 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="University_LaboratorModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="University_LaboratorModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Authorizations">
+          <Key>
+            <PropertyRef Name="AuthorizationId" />
+          </Key>
+          <Property Name="AuthorizationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="Course">
           <Key>
             <PropertyRef Name="CourseId" />
@@ -30,6 +37,25 @@
           <Property Name="Emer" Type="nvarchar(max)" />
           <Property Name="Mbiemer" Type="nvarchar(max)" />
           <Property Name="EnrollmentDate" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Birthday" Type="datetime" />
+          <Property Name="Password" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="User_Authorization">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AuthorizationId" Type="int" />
+          <Property Name="UserId" Type="int" />
         </EntityType>
         <Association Name="FK_Enrollment_Course_CourseId">
           <End Role="Course" Type="Self.Course" Multiplicity="1">
@@ -59,10 +85,41 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_User_Authorization_Authorizations">
+          <End Role="Authorizations" Type="Self.Authorizations" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="User_Authorization" Type="Self.User_Authorization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Authorizations">
+              <PropertyRef Name="AuthorizationId" />
+            </Principal>
+            <Dependent Role="User_Authorization">
+              <PropertyRef Name="AuthorizationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Authorization_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="User_Authorization" Type="Self.User_Authorization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="User_Authorization">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="University_LaboratorModelStoreContainer">
+          <EntitySet Name="Authorizations" EntityType="Self.Authorizations" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Enrollment" EntityType="Self.Enrollment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User_Authorization" EntityType="Self.User_Authorization" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Enrollment_Course_CourseId" Association="Self.FK_Enrollment_Course_CourseId">
             <End Role="Course" EntitySet="Course" />
             <End Role="Enrollment" EntitySet="Enrollment" />
@@ -71,9 +128,16 @@
             <End Role="Student" EntitySet="Student" />
             <End Role="Enrollment" EntitySet="Enrollment" />
           </AssociationSet>
+          <AssociationSet Name="FK_User_Authorization_Authorizations" Association="Self.FK_User_Authorization_Authorizations">
+            <End Role="Authorizations" EntitySet="Authorizations" />
+            <End Role="User_Authorization" EntitySet="User_Authorization" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Authorization_User" Association="Self.FK_User_Authorization_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="User_Authorization" EntitySet="User_Authorization" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="University_LaboratorModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -147,7 +211,76 @@
             <End Role="Student" EntitySet="Students" />
             <End Role="Enrollment" EntitySet="Enrollments" />
           </AssociationSet>
+          <EntitySet Name="Authorizations" EntityType="University_LaboratorModel.Authorization" />
+          <EntitySet Name="Users" EntityType="University_LaboratorModel.User" />
+          <EntitySet Name="User_Authorization" EntityType="University_LaboratorModel.User_Authorization" />
+          <AssociationSet Name="FK_User_Authorization_Authorizations" Association="University_LaboratorModel.FK_User_Authorization_Authorizations">
+            <End Role="Authorization" EntitySet="Authorizations" />
+            <End Role="User_Authorization" EntitySet="User_Authorization" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Authorization_User" Association="University_LaboratorModel.FK_User_Authorization_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="User_Authorization" EntitySet="User_Authorization" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Authorization">
+          <Key>
+            <PropertyRef Name="AuthorizationId" />
+          </Key>
+          <Property Name="AuthorizationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User_Authorization" Relationship="University_LaboratorModel.FK_User_Authorization_Authorizations" FromRole="Authorization" ToRole="User_Authorization" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Birthday" Type="DateTime" Precision="3" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User_Authorization" Relationship="University_LaboratorModel.FK_User_Authorization_User" FromRole="User" ToRole="User_Authorization" />
+        </EntityType>
+        <EntityType Name="User_Authorization">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AuthorizationId" Type="Int32" />
+          <Property Name="UserId" Type="Int32" />
+          <NavigationProperty Name="Authorization" Relationship="University_LaboratorModel.FK_User_Authorization_Authorizations" FromRole="User_Authorization" ToRole="Authorization" />
+          <NavigationProperty Name="User" Relationship="University_LaboratorModel.FK_User_Authorization_User" FromRole="User_Authorization" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_User_Authorization_Authorizations">
+          <End Type="University_LaboratorModel.Authorization" Role="Authorization" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="University_LaboratorModel.User_Authorization" Role="User_Authorization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Authorization">
+              <PropertyRef Name="AuthorizationId" />
+            </Principal>
+            <Dependent Role="User_Authorization">
+              <PropertyRef Name="AuthorizationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Authorization_User">
+          <End Type="University_LaboratorModel.User" Role="User" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="University_LaboratorModel.User_Authorization" Role="User_Authorization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="User_Authorization">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -180,6 +313,35 @@
                 <ScalarProperty Name="Emer" ColumnName="Emer" />
                 <ScalarProperty Name="Mbiemer" ColumnName="Mbiemer" />
                 <ScalarProperty Name="EnrollmentDate" ColumnName="EnrollmentDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Authorizations">
+            <EntityTypeMapping TypeName="University_LaboratorModel.Authorization">
+              <MappingFragment StoreEntitySet="Authorizations">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="AuthorizationId" ColumnName="AuthorizationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="University_LaboratorModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User_Authorization">
+            <EntityTypeMapping TypeName="University_LaboratorModel.User_Authorization">
+              <MappingFragment StoreEntitySet="User_Authorization">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="AuthorizationId" ColumnName="AuthorizationId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
